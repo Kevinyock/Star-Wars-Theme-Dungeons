@@ -343,7 +343,7 @@ public class Window extends JFrame// implements ActionListener
 			for (int i = 0; i < room.length; i++)
 			{
 				room[i] = new JLabel(); // create a new Java Label
-				if ((map.findStart().x != (i / 5)) || map.findStart().y != (i % 5))
+				if ((map.findStart().getX() != (i / 5)) || map.findStart().getY() != (i % 5))
 				{
 					room[i].setText("?");
 				} else
@@ -364,7 +364,7 @@ public class Window extends JFrame// implements ActionListener
 
 			// Character Info
 			characterSheet.setLayout(null);
-			// characterSheet.setLayout(new BoxLayout(characterSheet, BoxLayout.Y_AXIS));
+			// characterSheet.setLayout(new BoxLayout(characterSheet, BoxLayout.getY()_AXIS));
 			characterSheet.setBounds(530, 80, 200, 100);
 			characterSheet.setBackground(Color.white);
 			characterSheet.add(nameLabel);
@@ -517,28 +517,28 @@ public class Window extends JFrame// implements ActionListener
 				situationIcon.setIcon(jarjarbinks);
 				situationText.setText("<html> You have retreated to a nearby room");
 			
-				room[(5 * hero.getLocation().x) + hero.getLocation().y].setText(Character.toString(map.getCharAtLoc(hero.getLocation())));
+				room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText(Character.toString(map.getCharAtLoc(hero.getLocation())));
 				switch (((int) (Math.random() * 4)) + 1)
 				{
 				case 1:
 					hero.goNorth();
-					room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+					room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 					break;
 				case 2:
 					hero.goSouth();
-					room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+					room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 					break;
 				case 3:
 					hero.goEast();
-					room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+					room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 					break;
 				case 4:
 					hero.goWest();
-					room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+					room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 					break;
 				default:
 					hero.goWest();
-					room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+					room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 					break;
 				}
 			}
@@ -822,19 +822,19 @@ public class Window extends JFrame// implements ActionListener
 				if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP)
 				{
 					System.out.println("Y");
-					if (hero.getLocation().x > 0)
+					if (hero.getLocation().getX() > 0)
 					{
 						if(map.getCharAtLoc(hero.getLocation()) == 'f')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("F");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("F");
 						}
 						else if(map.getCharAtLoc(hero.getLocation()) == 's')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("S");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("S");
 						}
 						else
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("C");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("C");
 						}
 
 						switch (hero.goNorth())
@@ -849,7 +849,7 @@ public class Window extends JFrame// implements ActionListener
 							loadNextmap();
 							break;
 						default:
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 							if(map.getCharAtLoc(hero.getLocation()) != 'f' || map.getCharAtLoc(hero.getLocation()) != 's' )
 							{
 								map.removeCharAtLoc(hero.getLocation());
@@ -864,19 +864,19 @@ public class Window extends JFrame// implements ActionListener
 				}
 				if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT)
 				{
-					if (hero.getLocation().y > 0) 
+					if (hero.getLocation().getY() > 0) 
 					{
 						if(map.getCharAtLoc(hero.getLocation()) == 'f')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("F");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("F");
 						}
 						else if(map.getCharAtLoc(hero.getLocation()) == 's')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("S");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("S");
 						}
 						else
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("C");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("C");
 						}
 						switch (hero.goWest()) 
 						{
@@ -890,7 +890,7 @@ public class Window extends JFrame// implements ActionListener
 							loadNextmap();
 							break;
 						default:
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 							if(map.getCharAtLoc(hero.getLocation()) != 'f' || map.getCharAtLoc(hero.getLocation()) != 's' )
 							{
 								map.removeCharAtLoc(hero.getLocation());
@@ -906,19 +906,19 @@ public class Window extends JFrame// implements ActionListener
 				}
 				if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) 
 				{
-					if (hero.getLocation().x < 4)
+					if (hero.getLocation().getX() < 4)
 					{
 						if(map.getCharAtLoc(hero.getLocation()) == 'f')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("F");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("F");
 						}
 						else if(map.getCharAtLoc(hero.getLocation()) == 's')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("S");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("S");
 						}
 						else
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("C");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("C");
 						}
 						switch (hero.goSouth()) 
 						{
@@ -932,7 +932,7 @@ public class Window extends JFrame// implements ActionListener
 							loadNextmap();
 							break;
 						default:
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 							if(map.getCharAtLoc(hero.getLocation()) != 'f' || map.getCharAtLoc(hero.getLocation()) != 's' )
 							{
 								map.removeCharAtLoc(hero.getLocation());
@@ -947,20 +947,20 @@ public class Window extends JFrame// implements ActionListener
 				}
 				if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) 
 				{
-					if (hero.getLocation().y < 4)
+					if (hero.getLocation().getY() < 4)
 					{
 						
 						if(map.getCharAtLoc(hero.getLocation()) == 'f')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("F");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("F");
 						}
 						else if(map.getCharAtLoc(hero.getLocation()) == 's')
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("S");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("S");
 						}
 						else
 						{
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("C");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("C");
 						}
 						
 						switch (hero.goEast())
@@ -975,7 +975,7 @@ public class Window extends JFrame// implements ActionListener
 							loadNextmap();
 							break;
 						default:
-							room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+							room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 							if(map.getCharAtLoc(hero.getLocation()) != 'f' || map.getCharAtLoc(hero.getLocation()) != 's' )
 							{
 								map.removeCharAtLoc(hero.getLocation());
@@ -1059,7 +1059,7 @@ public class Window extends JFrame// implements ActionListener
 		 */
 		public void enemyEncountered()
 		{
-			room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+			room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 			inCombat = true;
 			enemy = EnemyGenerator.getInstance().generateEnemy(hero.getLevel());
 
@@ -1098,7 +1098,7 @@ public class Window extends JFrame// implements ActionListener
 		 */
 		public void loadNextmap()
 		{
-			room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+			room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 			invNum = 0;
 			if(hero.hasKey())
 			{
@@ -1117,7 +1117,7 @@ public class Window extends JFrame// implements ActionListener
 				heroHealth.setText(Integer.toString(hero.getHP()) + "/" + Integer.toString(hero.getMaxHP()));
 				for (int i = 0; i < room.length; i++) 
 				{
-					if ((map.findStart().x != (i / 5)) || map.findStart().y != (i % 5)) 
+					if ((map.findStart().getX() != (i / 5)) || map.findStart().getY() != (i % 5)) 
 					{	
 						room[i].setText("?");
 					} 
@@ -1147,7 +1147,7 @@ public class Window extends JFrame// implements ActionListener
 					heroHealth.setText(Integer.toString(hero.getHP()) + "/" + Integer.toString(hero.getMaxHP()));
 					for (int i = 0; i < room.length; i++) 
 					{
-						if ((map.findStart().x != (i / 5)) || map.findStart().y != (i % 5)) 
+						if ((map.findStart().getX() != (i / 5)) || map.findStart().getY() != (i % 5)) 
 						{	
 							room[i].setText("?");
 						} 
@@ -1166,7 +1166,7 @@ public class Window extends JFrame// implements ActionListener
 		public void itemFound()
 		{
 			System.out.println("Item");
-			room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+			room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 			System.out.println(hero.getNuminventory());
 			item = ItemGenerator.getInstance().generateItem();
 			situationText.setText("You have found a " + item.getName());
@@ -1212,7 +1212,7 @@ public class Window extends JFrame// implements ActionListener
 			}
 			else
 			{
-				room[(5 * hero.getLocation().x) + hero.getLocation().y].setText("H");
+				room[(5 * hero.getLocation().getX()) + hero.getLocation().getY()].setText("H");
 			}
 		}
 

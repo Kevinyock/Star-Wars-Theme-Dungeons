@@ -176,7 +176,7 @@ public class Map
 	
 	public char getCharAtLoc(Point p)
 	{
-			return map[p.x][p.y];
+			return map[p.getX()][p.getY()];
 	}
 	
 	/**
@@ -191,7 +191,7 @@ public class Map
 		{
 			for(int j = 0; j < 5; j++)
 			{
-				if(p.x == i && p.y == j)
+				if(p.getX() == i && p.getY() == j)
 				{
 					System.out.print("H" + "");
 				}
@@ -238,8 +238,8 @@ public class Map
 	
 	public void reveal(Point p)
 	{
-		//System.out.print(p.x + " " + p.y + "\n");
-		revealed[p.x][p.y] = true;
+		//System.out.print(p.getX() + " " + p.getY() + "\n");
+		revealed[p.getX()][p.getY()] = true;
 		//System.out.print("Sup\n");
 	}
 	
@@ -254,22 +254,22 @@ public class Map
 		
 		try
 		{
-			switch(map[p.x][p.y])
+			switch(map[p.getX()][p.getY()])
 			{
 			case 'f':
-				map[p.x][p.y] = 'f';
+				map[p.getX()][p.getY()] = 'f';
 				break;
 			case 'e':
-				map[p.x][p.y] = 'n';
+				map[p.getX()][p.getY()] = 'n';
 				break;
 				default:
-					map[p.x][p.y]= 'n'; 
+					map[p.getX()][p.getY()]= 'n'; 
 					break;
 			}
 			
-			/*if(map[p.x][p.x] != 'f')
+			/*if(map[p.getX()][p.getX()] != 'f')
 			{
-				map[p.x][p.y] = 'n'; 
+				map[p.getX()][p.getY()] = 'n'; 
 			}*/
 		}
 		catch(ArrayIndexOutOfBoundsException ab)

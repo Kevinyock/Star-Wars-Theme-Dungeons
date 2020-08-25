@@ -11,12 +11,12 @@ public class Point
 	/**
 	 * x position (left or right)
 	 */
-	public int x;
+	private int x;
 	
 	/**
 	 * y position (up or down)
 	 */
-	public int y;
+	private int y;
 	
 	/**
 	 * overloaded constructor
@@ -27,5 +27,35 @@ public class Point
 	{
 		this.x=x;
 		this.y=y;
+	}
+	
+	public int getX()
+	{
+		return x;
+	}
+	
+	public int getY()
+	{
+		return y;
+	}
+	
+	public int decrementPostX()
+	{
+		return x--;
+	}
+	
+	public int decrementPostY()
+	{
+		return y--;
+	}
+	
+	public int incrementPostX()
+	{
+		return x++;
+	}
+	
+	public int incrementPostY()
+	{
+		return y++;
 	}
 }

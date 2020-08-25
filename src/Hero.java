@@ -193,7 +193,7 @@ public class Hero extends Entity implements Force {
 	 */
 	public char goNorth() {
 		try {
-			location.x--;
+			location.decrementPostX();
 			map.reveal(location);
 		} catch (ArrayIndexOutOfBoundsException ab) {
 			System.out.println("You are not god,you cannot 'walk' outside of the map");
@@ -209,10 +209,10 @@ public class Hero extends Entity implements Force {
 	 */
 	public char goSouth() {
 		try {
-			location.x++;
+			location.incrementPostX();
 			map.reveal(location);
 		} catch (ArrayIndexOutOfBoundsException ab) {
-			location.x--;
+			location.decrementPostX();
 			System.out.println("You are not god,you cannot 'walk' outside of the map");
 			return map.getCharAtLoc(location);
 		}
@@ -227,10 +227,10 @@ public class Hero extends Entity implements Force {
 	 */
 	public char goEast() {
 		try {
-			location.y++;
+			location.incrementPostY();
 			map.reveal(location);
 		} catch (ArrayIndexOutOfBoundsException ab) {
-			location.y--;
+			location.decrementPostY();
 			System.out.println("You are not god,you cannot 'walk' outside of the map");
 			return map.getCharAtLoc(location);
 		}
@@ -244,10 +244,10 @@ public class Hero extends Entity implements Force {
 	 */
 	public char goWest() {
 		try {
-			location.y--;
+			location.decrementPostY();
 			map.reveal(location);
 		} catch (ArrayIndexOutOfBoundsException ab) {
-			location.y++;
+			location.incrementPostY();
 			System.out.println("You are not god,you cannot 'walk' outside of the map");
 			return map.getCharAtLoc(location);
 		}
